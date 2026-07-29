@@ -196,15 +196,21 @@
 // console.log(jon);
 // console.log(persona);
 //* Nuevas Propiedades dinamicas de los objetos
-let Calificacion = Math.floor(Math.random() * 10)
-let objUsuarios = {
-   [`Calificacion - ${Calificacion}`]: 'Juan'
-}
+// let Calificacion = Math.floor(Math.random() * 10)
+// let objUsuarios = {
+//    [`Calificacion - ${Calificacion}`]: 'Juan'
+// }
 
-let usuarios = ['Juan', 'Roy', 'Mike', 'Lucio', 'Kike', 'Tavo']
-console.log(objUsuarios);
+// let usuarios = ['Juan', 'Roy', 'Mike', 'Lucio', 'Kike', 'Tavo']
+// console.log(objUsuarios);
 
-usuarios.forEach((usuario, index) => {
-   objUsuarios[`id - ${index}`] = usuario
-});
-console.log(objUsuarios);
+// usuarios.forEach((usuario, index) => {
+//    objUsuarios[`id_${index}`] = usuario
+// });
+// console.log(objUsuarios);
+//* El objeto THIS se refiere al contexto del objeto, 
+//* por ejemplo en un objeto tomara el contexto del objeto lo mismo con la funcion
+//* si se crea en el contexto global se hara referencia al objeto Window
+//* la unica funcion que no crea su propio contexto es la arrow function
+
+//* CALL, APLY, BIND
