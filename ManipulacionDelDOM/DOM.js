@@ -78,72 +78,125 @@
 // console.log($cards.nextElementSibling);
 // console.log($cards.children[3].closest("section"));
 
-//* DOM: Creando Elementos y Fragmento
-const $figure = document.createElement("card"),
-      $img = document.createElement("img"),
-      $figcamption = document.createElement("figcaption"),
-      $figcamptionText = document.createTextNode("Animals"),
-      $cards = document.querySelector(".cards")
+// //* DOM: Creando Elementos y Fragmento
+// const $figure = document.createElement("card"),
+//       $img = document.createElement("img"),
+//       $figcamption = document.createElement("figcaption"),
+//       $figcamptionText = document.createTextNode("Animals"),
+//       $cards = document.querySelector(".cards")
 
-      $img.setAttribute("src", "https://placeimg.dev/200/200/animals")
-      $img.setAttribute("alt", "Animals")
-      $figure.classList.add("card")
+//       $img.setAttribute("src", "https://placeimg.dev/200/200/animals")
+//       $img.setAttribute("alt", "Animals")
+//       $figure.classList.add("card")
 
-      $figcamption.appendChild($figcamptionText)
-      $figure.appendChild($img)
-      $figure.appendChild($figcamption)
-      $cards.appendChild($figure)
+//       $figcamption.appendChild($figcamptionText)
+//       $figure.appendChild($img)
+//       $figure.appendChild($figcamption)
+//       $cards.appendChild($figure)
 
-//TODO Insertar Muchos elementos al mismo tiempo (DB, API)
-const estaciones = ["Primavera", "Verano", "Otoño", "Invierno"]
-const $ul = document.createElement("ul")
+// //TODO Insertar Muchos elementos al mismo tiempo (DB, API)
+// const estaciones = ["Primavera", "Verano", "Otoño", "Invierno"]
+// const $ul = document.createElement("ul")
 
-document.write("<h3> Estaciones del año </h3>")
-document.body.appendChild($ul)
+// document.write("<h3> Estaciones del año </h3>")
+// document.body.appendChild($ul)
 
-estaciones.forEach((el) => {
-  const $li = document.createElement("li")
-  $li.textContent = el
-  $ul.appendChild($li)
-})
+// estaciones.forEach((el) => {
+//   const $li = document.createElement("li")
+//   $li.textContent = el
+//   $ul.appendChild($li)
+// })
 
-document.write("<h3>Continentes</h3>")
-const continentes = ["America", "Europa", "Asia", "Africa", "Oceania"]
-const $ul2 = document.createElement("ul")
-document.body.appendChild($ul2)
+// document.write("<h3>Continentes</h3>")
+// const continentes = ["America", "Europa", "Asia", "Africa", "Oceania"]
+// const $ul2 = document.createElement("ul")
+// document.body.appendChild($ul2)
 
-continentes.forEach((con) => {
-  const $li2 = document.createElement("li")
-  $li2.textContent = con
-  $ul2.appendChild($li2)
-})
+// continentes.forEach((con) => {
+//   const $li2 = document.createElement("li")
+//   $li2.textContent = con
+//   $ul2.appendChild($li2)
+// })
 
-//TODO Los FRAGMENTOS sirven para cuandos se quieren insertar muchos elementos en el DOM, ayuda a que no se alente la aplicacion ya que es una sola insercion dinamica que contiene toda la informacion recuperada del endpoint, ya sea una base de datos una API, etc. 
-const meses = [
-  "Enero", 
-  "Febrero", 
-  "Marzo", 
-  "Abril", 
-  "Mayo", 
-  "Junio",
-  "Julio", 
-  "Agosto",
-  "Septiembre",
-  "Octubre", 
-  "Noviembre", 
-  "Diciembre"
-]
-document.write("<h3>Meses del año</h3>")
-const $ul3 = document.createElement("ul")
-const $fragment = document.createDocumentFragment()
+// //TODO Los FRAGMENTOS sirven para cuandos se quieren insertar muchos elementos en el DOM, ayuda a que no se alente la aplicacion ya que es una sola insercion dinamica que contiene toda la informacion recuperada del endpoint, ya sea una base de datos una API, etc. 
+// const meses = [
+//   "Enero", 
+//   "Febrero", 
+//   "Marzo", 
+//   "Abril", 
+//   "Mayo", 
+//   "Junio",
+//   "Julio", 
+//   "Agosto",
+//   "Septiembre",
+//   "Octubre", 
+//   "Noviembre", 
+//   "Diciembre"
+// ]
+// document.write("<h3>Meses del año</h3>")
+// const $ul3 = document.createElement("ul")
+// const $fragment = document.createDocumentFragment()
 
-meses.forEach((mes) => {
-  $li3 = document.createElement("li")
-  $li3.textContent = mes
-  $fragment.appendChild($li3)
-})
-$ul3.appendChild($fragment)
-document.body.appendChild($ul3)
+// meses.forEach((mes) => {
+//   $li3 = document.createElement("li")
+//   $li3.textContent = mes
+//   $fragment.appendChild($li3)
+// })
+// $ul3.appendChild($fragment)
+// document.body.appendChild($ul3)
+
+//* DOM: Templates HTML
+// const $cards = document.querySelector(".cards"),
+//       $template = document.getElementById("template-card").content,
+//       $fragment = document.createDocumentFragment(),
+//       cardContent = [
+//         {
+//           title: "Tecnología",
+//           img: "https://placeimg.dev/200/200/tech", //Si no funciona cambiar por .dev
+//         },
+//         {
+//           title: "Animales",
+//           img: "https://placeimg.dev/200/200/animals",
+//         },
+//         {
+//           title: "Arquitectura",
+//           img: "https://placeimg.dev/200/200/arch",
+//         },
+//         {
+//           title: "Gente",
+//           img: "https://placeimg.dev/200/200/people",
+//         },
+//         {
+//           title: "Naturaleza",
+//           img: "https://placeimg.dev/200/200/nature",
+//         },
+//       ]
+
+// cardContent.forEach((c) => {
+//   $template.querySelector("img").setAttribute("src", c.img)
+//   $template.querySelector("img").setAttribute("alt", c.title)
+//   $template.querySelector("figcaption").textContent = c.title
+
+//   const $clone = document.importNode($template, true) 
+//   $fragment.appendChild($clone)
+// })
+// $cards.appendChild($fragment)
+
+//*DOM: Modificando Elementos
+const $cards = document.querySelector(".cards"),
+    $newCard = document.createElement("figure"),
+    $cloneCards = $cards.cloneNode(true)
+
+    $newCard.innerHTML = `
+    <img src="https://placeimg.dev/200/200/any" alt="Any">
+    <figcaption>Any</figcaption>
+    `
+    $newCard.classList.add("card")
+     
+    //$cards.replaceChild($newCard, $cards.children[2])
+    //$cards.insertBefore($newCard, $cards.firstElementChild  )
+    //$cards.removeChild($cards.children[4])
+    document.body.appendChild($cloneCards)
 
 
 
