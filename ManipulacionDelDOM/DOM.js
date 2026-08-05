@@ -182,32 +182,110 @@
 // })
 // $cards.appendChild($fragment)
 
-//*DOM: Modificando Elementos
-const $cards = document.querySelector(".cards"),
-    $newCard = document.createElement("figure"),
-    $cloneCards = $cards.cloneNode(true)
+//*DOM: Modificando Elementos (old ways)
+//const $cards = document.querySelector(".cards"),
+//     $newCard = document.createElement("figure"),
+//     $cloneCards = $cards.cloneNode(true)
 
-    $newCard.innerHTML = `
-    <img src="https://placeimg.dev/200/200/any" alt="Any">
-    <figcaption>Any</figcaption>
-    `
-    $newCard.classList.add("card")
+//     $newCard.innerHTML = `
+//     <img src="https://placeimg.dev/200/200/any" alt="Any">
+//     <figcaption>Any</figcaption>
+//     `
+//     $newCard.classList.add("card")
      
     //$cards.replaceChild($newCard, $cards.children[2])
     //$cards.insertBefore($newCard, $cards.firstElementChild  )
     //$cards.removeChild($cards.children[4])
-    document.body.appendChild($cloneCards)
+//     document.body.appendChild($cloneCards)
 
+//* DOM: Modificando Elementos (Cool Style)
+// const $cards = document.querySelector(".cards"),
+//       $newCard = document.createElement("figure")
 
+// $newCard.innerHTML = `
+// <img src="https://placeimg.dev/200/200/any" alt="Any">
+// <figcaption>Any</figcaption>
+// `
+// $newCard.classList.add("card")
+//$cards.insertAdjacentElement("afterbegin",$newCard)
+//$cards.insertAdjacentElement("afterend",$newCard)
+//$cards.insertAdjacentElement("beforebegin",$newCard)
+//$cards.insertAdjacentElement("beforeend",$newCard)
 
+//* DOM: Manejadores de Eventos
+// function holaMundo(){
+//     alert('Hola Mundo!')
+//     console.log(Event);
+// }
 
+// const $eventoSemantico = document.querySelector("#eventoSemantico")
 
+// $eventoSemantico.onclick = holaMundo
+// $eventoSemantico.onclick = function(e){
+//     alert("Evento semantico");
+//     console.log(e);
+//     console.log(event);
+//     console.log(Event);
+// }
+// //? Evento Multiple
+// const $eventoMultiple = document.getElementById("eventoMultiple")
+// $eventoMultiple.addEventListener("click",holaMundo)
+// $eventoMultiple.addEventListener("click",(e)=>{
+//     alert("manejador de eventos multiples")
+//     console.log(e);
+//     console.log(e.type);
+//     console.log(e.target);
+// })
 
+//*DOM: Eventos con Parámetros y Remover Eventos 
+// function holaMundo(){
+//     alert('hola desde -> Hola Mundo!')
+//     console.log(Event);
+// }
 
+// function saludar(nombre = "Desconocido"){
+//     alert(`Hola ${nombre} desde --> saludar`)
+// }
 
+// //? Evento Multiple
+// const $eventoMultiple = document.getElementById("eventoMultiple")
+// $eventoMultiple.addEventListener("click",holaMundo)
+// $eventoMultiple.addEventListener("click",(e)=>{
+//     alert("hola desde -> manejador de eventos multiples")
+//     console.log(e);
+//     console.log(e.type);
+//     console.log(e.target);
+// })
 
+// $eventoMultiple.addEventListener("click",() => {
+//     saludar("Tavo")
+// })
+// //TODO Esto es inutil si quieres quitar un evento commenta la funcion
+// const $btnRemover = document.getElementById("btnRemover")
 
+// const removerDblClick = (e) =>{
+//     alert('Removiendo esta evento del boton')
+//     console.log(e);
+//     $btnRemover.removeEventListener("dblclick",removerDblClick)
+// }
 
+// $btnRemover.addEventListener("dblclick", removerDblClick)
 
+//* DOM: Flujo de Eventos (Burbuja y Captura)
+const $divEventos = document.querySelectorAll(".eventosFlujo div")
+console.log($divEventos);
 
+function flujoEventos(e){
+    console.log(`Hola te saluda ${this.className}, el click lo origino ${e.target.className}`);
+}
 
+$divEventos.forEach((d) => {
+    //Fase burbuja
+    //d.addEventListener("click",flujoEventos)
+    //Fase captura
+    //d.addEventListener("click",flujoEventos,true)
+    d.addEventListener("click",flujoEventos,{
+        capture:true,
+        once:true
+    })
+})

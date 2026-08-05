@@ -19,6 +19,20 @@
             max-width: 100%;
             object-fit: cover;
         }
+        .eventosFlujo div{
+            padding: 4rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .uno{
+            background-color: yellow;
+        }
+        .dos{
+            background-color: gold;
+        }
+        .tres{
+            background-color: lightgoldenrodyellow;
+        }
     </style>
 </head>
 <body>
@@ -86,7 +100,27 @@
         <figcaption></figcaption>
         </figure>
     </template>
-    
+    <h3>Eventos en JS</h3>
+    <h4>Manejadores de eventos</h4>
+    <button onclick="holaMundo()">Evento con atributo HTML (no recomendable)</button>
+    <br><br>
+    <button id="eventoSemantico">Evento con manejador semantico</button>
+    <br><br>
+    <button id="eventoMultiple">Evento Multiple</button>
+    <br><br>
+    <button id="btnRemover">Remover Evento</button>
+    <br>
+    <h4>Flujo de eventos</h4>
+    <section class="eventosFlujo">
+        <div class="uno">
+            1
+            <div class="dos">
+                2
+                <div class="tres">3</div>
+            </div>
+        </div> 
+    </section>
+
 <script src="DOM.js"></script>
 </body>
 </html>
