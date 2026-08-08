@@ -338,3 +338,19 @@ document.addEventListener("click", (e) => {
 //* BOM: Propiedades y Eventos
 
 //* BOM: Métodos (.open, .close, .print)
+const $btnOpen = document.querySelector("#btnOpen")
+const $btnClose = document.querySelector("#btnClose")
+const $btnPrint = document.querySelector("#btnPrint")
+let newW 
+
+$btnOpen.addEventListener("click", (e) => {
+    newW = window.open("https://gm-softwareservices.vercel.app/")
+})
+
+$btnClose.addEventListener("click", () => {
+    newW.close()
+})
+
+$btnPrint.addEventListener("click", () => {
+    window.print()
+})
