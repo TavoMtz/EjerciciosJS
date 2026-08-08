@@ -272,20 +272,69 @@
 // $btnRemover.addEventListener("dblclick", removerDblClick)
 
 //* DOM: Flujo de Eventos (Burbuja y Captura)
-const $divEventos = document.querySelectorAll(".eventosFlujo div")
-console.log($divEventos);
+// const $divEventos = document.querySelectorAll(".eventosFlujo div")
+// console.log($divEventos);
 
-function flujoEventos(e){
-    console.log(`Hola te saluda ${this.className}, el click lo origino ${e.target.className}`);
-}
+// function flujoEventos(e){
+//     console.log(`Hola te saluda ${this.className}, el click lo origino ${e.target.className}`);
+// }
 
-$divEventos.forEach((d) => {
+//$divEventos.forEach((d) => {
     //Fase burbuja
     //d.addEventListener("click",flujoEventos)
     //Fase captura
     //d.addEventListener("click",flujoEventos,true)
-    d.addEventListener("click",flujoEventos,{
-        capture:true,
-        once:true
-    })
+    // d.addEventListener("click",flujoEventos,{
+    //     capture:true,
+    //     once:true
+    // })
+//})
+
+//* DOM: stopPropagation & preventDefault 
+// const $divEventos = document.querySelectorAll(".eventosFlujo div")
+// console.log($divEventos);
+
+// function flujoEventos(e){
+//     console.log(`Hola te saluda ${this.className}, el click lo origino ${e.target.className}`);
+//     e.stopPropagation()
+// }
+
+// $divEventos.forEach((d) => {
+//     d.addEventListener("click",flujoEventos)
+// })
+// const $enlace = document.querySelector(".enlace")
+// console.log($enlace)
+// $enlace.addEventListener("click", (e) => {
+//     alert("Hola soy Tavo bienvenido a mi web")
+//     e.preventDefault()
+//     e.stopPropagation()
+//  })
+
+//* DOM: Delegación de Eventos, es la MEJOR manera de agregar eventos a MUCHOS elementos de manera dinamica
+function flujoEventos(e){
+    console.log(`Hola te saluda ${e.target.className}, el click lo origino ${e.target.className}`);
+}
+function infoFoto(e){
+    console.log(`Hola diste click en la imagen de ${e.target.alt}`)
+}
+
+document.addEventListener("click", (e) => {
+    console.log("click en", e.target);
+
+    if(e.target.matches(".eventosFlujo div")){
+        flujoEventos(e)
+    }
+
+    if(e.target.matches(".enlace")){
+        alert("Hola soy tavo bienvenidos a mi web")
+        e.preventDefault()
+    }
+
+    if(e.target.matches(".cards img")){
+        infoFoto(e)
+    }
 })
+
+//* BOM: Propiedades y Eventos
+
+//* BOM: Métodos (.open, .close, .print)
